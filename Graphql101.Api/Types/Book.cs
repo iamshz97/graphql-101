@@ -1,0 +1,1 @@
+﻿public record Book(string Name, Author Author);
