@@ -32,4 +32,13 @@
     }
 
     public string GetDogName(Dog dog) => dog.Name;
+
+    public string GetCatOrDogName(DogOrCat dogOrCat) => dogOrCat switch
+    {
+        DogOrCat(Dog dog, null) => dog.Name,
+        DogOrCat(null, Cat cat) => cat.Name,
+        _ => throw new InvalidOperationException("Invalid dog or cat")
+    };
+
+    public record DogOrCat(Dog? Dog, Cat? Cat);
 }
