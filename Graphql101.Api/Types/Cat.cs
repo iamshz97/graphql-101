@@ -1,4 +1,4 @@
-﻿public class Cat : IPet
+﻿public class Cat : IPet, IMammal
 {
     public Cat(string name, bool isEvil)
     {

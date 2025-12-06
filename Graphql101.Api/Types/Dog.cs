@@ -1,4 +1,4 @@
-﻿public class Dog : IPet
+﻿public class Dog : IPet, IMammal
 {
     public Dog(string name, string breed)
     {

@@ -8,8 +8,18 @@
         new Dog("Buddy", "Labrador"),
         new Parrot("Polly", true)
     };
+
+    public IEnumerable<IMammal> GetMammals() => new List<IMammal>
+    {
+        new Cat("Whiskers", true),
+        new Dog("Buddy", "Labrador"),
+    };
 }
 
+[UnionType("Mammal")]
+public interface IMammal
+{
+}
 
 public class Parrot : IPet
 {
