@@ -4,31 +4,32 @@
     
     public IEnumerable<IPet> GetPets() => new List<IPet>
     {
-        new Cat("Whiskers", true),
+        new Cat("Whiskers", true, CatType.Domestic),
         new Dog("Buddy", "Labrador"),
         new Parrot("Polly", true)
     };
 
     public IEnumerable<IMammal> GetMammals() => new List<IMammal>
     {
-        new Cat("Whiskers", true),
+        new Cat("Whiskers", true, CatType.Domestic),
         new Dog("Buddy", "Labrador"),
     };
-}
 
-[UnionType("Mammal")]
-public interface IMammal
-{
-}
+    public IEnumerable<Cat> GetAllCats(CatType? type){
+        var cats = new List<Cat> 
+        {
+            new Cat("Whiskers", true, CatType.Domestic),
+            new Cat("Whiskers", true, CatType.Wild),
+            new Cat("Whiskers", true, CatType.Exotic),
+        };
 
-public class Parrot : IPet
-{
-    public Parrot(string name, bool isCanTalk)
-    {
-        Name = name;
-        IsCanTalk = isCanTalk;
+        if (type is not null)
+        {
+            return cats.Where(c => c.Type == type);
+        }
+
+        return cats;
     }
 
-    public string Name { get; set; }
-    public bool IsCanTalk { get; set; }
+    public string GetDogName(Dog dog) => dog.Name;
 }
