@@ -14,8 +14,3 @@ app.UseHttpsRedirection();
 app.MapGraphQL();
 
 app.Run();
-
-public class Query()
-{
-    public string SayHello(string name = "World") => $"Hello, {name}!";
-}
